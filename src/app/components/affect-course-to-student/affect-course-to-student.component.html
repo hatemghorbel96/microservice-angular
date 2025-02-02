@@ -1,0 +1,57 @@
+<section class="container mb-4 card bg-body-tertiary border-transparent card-line mb-5">
+    <div class="card-body">
+      <h2 class="fs-5 mb-1">Affect Course to {{ studentDetails.firstName }} {{ studentDetails.lastName }}</h2>
+      <p class="text-body-secondary mb-4">Select a course and assign it to the student.</p>
+      
+      <form (ngSubmit)="affectCourse()">
+        <div class="mb-4">
+          <label for="course" class="form-label">Select Course</label>
+          <select
+            id="course"
+            [(ngModel)]="courseId"
+            name="course"
+            class="form-select bg-body"
+            required
+          >
+            <option *ngFor="let course of courses" [value]="course.id">
+              {{ course.courseName }}
+            </option>
+          </select>
+        </div>
+        
+        <div class="text-end">
+          <button type="submit" class="btn btn-primary btn-sm mt-1">Assign Course</button>
+        </div>
+      </form>
+    </div>
+
+    <div *ngIf="studentDetails" class="container">
+        <div class="card mt-4">
+            <div class="card-header bg-primary text-white">
+                <h3>Student Details</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p><strong>Name:</strong> {{ studentDetails.firstName }} {{ studentDetails.lastName }}</p>
+                        <p><strong>Email:</strong> {{ studentDetails.email }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Address</h4>
+                        <p><strong>City:</strong> {{ studentDetails.address?.city }}</p>
+                        <p><strong>Street:</strong> {{ studentDetails.address?.street }}</p>
+                    </div>
+                </div>
+                
+                <h4 class="mt-4">Courses</h4>
+                <ul class="list-group">
+                    <li *ngFor="let course of studentDetails.courses" class="list-group-item">
+                        {{ course.courseName }} ({{ course.courseCode }})
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+  </section>
+  

@@ -1,0 +1,15 @@
+<div class="container">
+    <h2>Student Details</h2>
+    <div *ngIf="studentData">
+      <p><strong>Name:</strong> {{ studentData.firstName }} {{ studentData.lastName }}</p>
+      <p><strong>Email:</strong> {{ studentData.email }}</p>
+      <p><strong>City:</strong> {{ studentData.address.city }}</p>
+      <h3>Enrolled Courses:</h3>
+      <ul>
+        <li *ngFor="let course of studentData.courses">
+          {{ course.courseName }} ({{ course.courseCode }})
+        </li>
+      </ul>
+    </div>
+  </div>
+  

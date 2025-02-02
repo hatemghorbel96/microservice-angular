@@ -1,0 +1,32 @@
+<div class="container my-5">
+    <h2 class="text-center mb-4">Student List</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>City</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of students">
+          <td>{{ student.id }}</td>
+          <td>{{ student.firstName }} {{ student.lastName }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.address.city }}</td>
+          <td>
+           
+          <!--   <a [routerLink]="['/student-details', student.id]" class="btn btn-info btn-sm">Show Details</a> -->
+            
+           
+            <a [routerLink]="['/assign-course', student.id]" class="btn btn-primary btn-sm me-1">Assign Course</a>
+
+            <a [routerLink]="['/custom-student-details', student.id]" class="btn btn-success btn-sm">Details</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
